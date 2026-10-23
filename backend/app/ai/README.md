@@ -76,3 +76,25 @@ Run the automated test suite:
 python -m unittest discover -s backend/tests -p "test_*.py" -v
 ```
 All unit tests run offline against mocked API responses without requiring an active API key.
+
+## Third-Party Notices
+
+This module integrates the **Gemma 4** language model via the Gemini API.
+
+| Field | Detail |
+|---|---|
+| **Model identifier** | `gemma-4-26b-a4b-it` (default; configurable via `GEMINI_MODEL_ID`) |
+| **Creator** | Google DeepMind |
+| **License** | Apache License 2.0 |
+| **Official license** | https://ai.google.dev/gemma/apache_2 |
+| **Model page** | https://ai.google.dev/gemma |
+
+**Access method:** Model weights are accessed exclusively as a remote service through the
+Gemini API — no model weights are downloaded, bundled, or redistributed by this project.
+
+**Attribution:** Google DeepMind is credited as the model creator. Full attribution and
+Apache 2.0 compliance details are documented in
+[`THIRD_PARTY_NOTICES.md`](../../../../THIRD_PARTY_NOTICES.md) at the repository root.
+
+**Distinction from Socio-hub code:** The Apache 2.0 licence on the Gemma 4 model weights
+applies to the model itself. Socio-hub's own source code in this module is a separate work.
