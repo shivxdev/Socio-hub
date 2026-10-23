@@ -4,7 +4,7 @@ from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import get_settings
 from app.core.exceptions import register_exception_handlers
-from app.routers import health
+from app.routers import ai, analytics, health, tasks, users
 
 
 def create_app() -> FastAPI:
@@ -37,10 +37,17 @@ def create_app() -> FastAPI:
 
     # Application routes under /api/v1 prefix
     api_v1_router = APIRouter(prefix="/api/v1")
-    # Subsequent modules (users, ai, tasks, analytics) will be mounted here
+    api_v1_router.include_router(users.router)
+    api_v1_router.include_router(tasks.router)
+    api_v1_router.include_router(ai.router)
+    api_v1_router.include_router(analytics.router)
+
     app.include_router(api_v1_router)
 
     return app
+
+
+
 
 
 app = create_app()
